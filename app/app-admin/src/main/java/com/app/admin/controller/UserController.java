@@ -9,8 +9,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +32,7 @@ import com.app.util.Paginator;
 @RequestMapping("/user")
 public class UserController {
 	
-	private static Log log = LogFactory.getLog(UserController.class);
+	private static Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
 	private IUserService userService;
@@ -108,7 +108,7 @@ public class UserController {
 	public String add(@Valid User user, BindingResult binding) {
 		if (binding.hasErrors()) {
 			for (ObjectError error : binding.getAllErrors()) {
-				log.error(error.getDefaultMessage());
+				logger.error(error.getDefaultMessage());
 			}
 			return "/user/add";
 		}

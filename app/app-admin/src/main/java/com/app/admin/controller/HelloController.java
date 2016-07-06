@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,7 +31,7 @@ import com.app.service.impl.UserServiceImpl;
 @RequestMapping("/hello")
 public class HelloController {
 
-	private static Log log = LogFactory.getLog(HelloController.class);
+	private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
 	private UserServiceImpl userService;
 
@@ -89,8 +89,8 @@ public class HelloController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String doSave(@ModelAttribute User user) {
 
-		log.debug("Info of Course:");
-		log.debug(ReflectionToStringBuilder.toString(user));
+		logger.debug("Info of Course:");
+		logger.debug(ReflectionToStringBuilder.toString(user));
 
 		// 在此进行业务操作，比如数据库持久化
 		user.setId(123);
