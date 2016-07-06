@@ -95,6 +95,9 @@ public class UserController {
 		// 返回数据
 		request.setAttribute("users", users);
 		request.setAttribute("paginator", paginator);
+		
+		
+		//PageHelper.startPage(1, 10);
 		return "/user/list";
 	}
 	
