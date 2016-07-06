@@ -25,9 +25,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.model.User;
-import com.app.service.IUserService;
+import com.app.model.UserExample;
+import com.app.service.UserService;
 import com.app.util.Paginator;
 
+/**
+ * 用户控制器
+ * @author shuzheng
+ * @date 2016年7月6日 下午6:16:25
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -35,7 +41,7 @@ public class UserController {
 	private static Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
-	private IUserService userService;
+	private UserService userService;
 
 	@ExceptionHandler(Exception.class)
 	public void exceptionHandler(Exception e) {
@@ -72,7 +78,10 @@ public class UserController {
 		parameters.put("condition", condition);
 		parameters.put("order", order);
 		// 创建分页对象
-		long total = userService.count(condition);
+		UserExample userExample = new UserExample();
+		userExample.createCriteria()
+			.andIdGreaterThan(0);
+		long total = userService.getMapper().countByExample(userExample);
 		Paginator paginator = new Paginator();
 		paginator.setTotal(total);
 		paginator.setPage(page);
@@ -82,7 +91,7 @@ public class UserController {
 		paginator.setQuery(request.getQueryString());
 		// 调用有分页功能的方法
 		parameters.put("paginator", paginator);
-		List<User> users = userService.getAll(parameters);
+		List<User> users = userService.selectAll(parameters);
 		// 返回数据
 		request.setAttribute("users", users);
 		request.setAttribute("paginator", paginator);
@@ -113,7 +122,7 @@ public class UserController {
 			return "/user/add";
 		}
 		user.setCtime(System.currentTimeMillis());
-		userService.insert(user);
+		userService.getMapper().insertSelective(user);
 		return "redirect:/user/list";
 	}
 	
@@ -141,7 +150,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
 	public String delete(@PathVariable int id) {
-		userService.delete(id);
+		userService.getMapper().deleteByPrimaryKey(id);
 		return "redirect:/user/list";
 	}
 	
@@ -153,7 +162,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
 	public String update(@PathVariable int id, Model model) {
-		model.addAttribute("user", userService.get(id));
+		model.addAttribute("user", userService.getMapper().selectByPrimaryKey(id));
 		return "/user/update";
 	}
 	
@@ -171,7 +180,7 @@ public class UserController {
 			model.addAttribute("errors", binding.getAllErrors());
 			return "user/update/" + id;
 		}
-		userService.update(user);
+		userService.getMapper().updateByPrimaryKeySelective(user);
 		return "redirect:/user/list";
 	}
 	
@@ -222,7 +231,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "/ajax/{id}", method = RequestMethod.GET)
 	public Object ajax(@PathVariable int id) {
-		return userService.get(id);
+		return userService.getMapper().selectByPrimaryKey(id);
 	}
 	
 }

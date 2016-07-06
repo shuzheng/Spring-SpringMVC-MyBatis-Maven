@@ -27,6 +27,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.app.model.User;
 import com.app.service.impl.UserServiceImpl;
 
+/**
+ * 示例controller
+ * @author shuzheng
+ * @date 2016年7月6日 下午6:16:00
+ */
 @Controller
 @RequestMapping("/hello")
 public class HelloController {
@@ -56,7 +61,7 @@ public class HelloController {
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public String viewCourse(@RequestParam("courseId") Integer courseId, Model model) {
 
-		User user = userService.get(courseId);
+		User user = userService.getMapper().selectByPrimaryKey(courseId);
 		model.addAttribute(user);
 		return "course_overview";
 	}
@@ -65,7 +70,7 @@ public class HelloController {
 	@RequestMapping("/view2/{courseId}")
 	public String viewCourse2(@PathVariable("courseId") Integer courseId, Map<String, Object> map) {
 
-		User user = userService.get(courseId);
+		User user = userService.getMapper().selectByPrimaryKey(courseId);
 		map.put("user", user);
 		return "course_overview";
 	}
@@ -75,7 +80,7 @@ public class HelloController {
 	public String viewCourse3(HttpServletRequest request) {
 
 		Integer courseId = Integer.valueOf(request.getParameter("courseId"));
-		User user = userService.get(courseId);
+		User user = userService.getMapper().selectByPrimaryKey(courseId);
 		request.setAttribute("user", user);
 
 		return "course_overview";
@@ -134,12 +139,12 @@ public class HelloController {
 	@RequestMapping(value = "/{courseId}", method = RequestMethod.GET)
 	public @ResponseBody
 	User getCourseInJson(@PathVariable Integer courseId) {
-		return userService.get(courseId);
+		return userService.getMapper().selectByPrimaryKey(courseId);
 	}
 
 	@RequestMapping(value = "/jsontype/{courseId}", method = RequestMethod.GET)
 	public ResponseEntity<User> getCourseInJson2(@PathVariable Integer courseId) {
-		User user = userService.get(courseId);
+		User user = userService.getMapper().selectByPrimaryKey(courseId);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 }

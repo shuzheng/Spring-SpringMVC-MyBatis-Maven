@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.app.service.MessageService;
 
+/**
+ * 消息控制器
+ * @author shuzheng
+ * @date 2016年7月6日 下午6:16:15
+ */
 @Controller
 @RequestMapping("/message")
 public class MessageController {
