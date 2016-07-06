@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
-import com.app.mapper.UserPOMapper;
+import com.app.mapper.po.UserPOMapper;
 import com.app.model.po.UserPO;
 import com.app.service.MessageService;
 
