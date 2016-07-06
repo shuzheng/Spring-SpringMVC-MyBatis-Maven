@@ -41,7 +41,7 @@
 			<choose>
 				<when test="clumns != null">${clumns}</when>
 				<otherwise>
-					id,username,password,nickname,sex,ctime
+					*
 				</otherwise>
 			</choose>
 		from
