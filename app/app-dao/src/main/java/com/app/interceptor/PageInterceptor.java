@@ -22,7 +22,7 @@ import com.app.util.Paginator;
  * 分页拦截器
  * 
  * @author shuzheng
- * @date 2015-10-31
+ * @date 2016年7月6日 下午6:04:12
  */
 @Intercepts({
 	@Signature(

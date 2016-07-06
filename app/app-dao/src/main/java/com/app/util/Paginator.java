@@ -3,9 +3,9 @@ package com.app.util;
 
 /**
  * 分页实体类
- * 
+ *
  * @author shuzheng
- * @date 2015-10-06
+ * @date 2016年7月6日 下午6:05:00
  */
 public class Paginator {
 
