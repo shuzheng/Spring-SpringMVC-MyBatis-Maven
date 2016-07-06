@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.app.mapper.po.UserPOMapper" >
-  <resultMap id="BaseResultMap" type="com.app.model.po.UserPO" >
+<mapper namespace="com.app.mapper.UserPOMapper" >
+  <resultMap id="BaseResultMap" type="com.app.model.UserPO" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     id, username, password, nickname, sex, ctime
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.app.model.po.UserPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.app.model.UserPOExample" >
     select
     <if test="distinct" >
       distinct
@@ -94,13 +94,13 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.app.model.po.UserPOExample" >
+  <delete id="deleteByExample" parameterType="com.app.model.UserPOExample" >
     delete from user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.app.model.po.UserPO" >
+  <insert id="insert" parameterType="com.app.model.UserPO" >
     insert into user (id, username, password, 
       nickname, sex, ctime
       )
@@ -108,7 +108,7 @@
       #{nickname,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{ctime,jdbcType=BIGINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.app.model.po.UserPO" >
+  <insert id="insertSelective" parameterType="com.app.model.UserPO" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.app.model.po.UserPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.app.model.UserPOExample" resultType="java.lang.Integer" >
     select count(*) from user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.po.UserPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.UserPO" >
     update user
     <set >
       <if test="username != null" >
@@ -216,7 +216,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.app.model.po.UserPO" >
+  <update id="updateByPrimaryKey" parameterType="com.app.model.UserPO" >
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

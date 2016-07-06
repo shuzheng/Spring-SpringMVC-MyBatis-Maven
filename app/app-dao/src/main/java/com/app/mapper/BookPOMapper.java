@@ -1,7 +1,7 @@
-package com.app.mapper.po;
+package com.app.mapper;
 
-import com.app.model.po.BookPO;
-import com.app.model.po.BookPOExample;
+import com.app.model.BookPO;
+import com.app.model.BookPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

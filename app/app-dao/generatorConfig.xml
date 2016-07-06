@@ -16,15 +16,15 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.app.model.po"
+		<javaModelGenerator targetPackage="com.app.model"
 			targetProject="app-dao">
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="com.app.mapper.po"
+		<sqlMapGenerator targetPackage="com.app.mapper"
 			targetProject="app-dao" />
 
-		<javaClientGenerator targetPackage="com.app.mapper.po"
+		<javaClientGenerator targetPackage="com.app.mapper"
 			targetProject="app-dao" type="XMLMAPPER" />
 
 		<table tableName="user" domainObjectName="UserPO"></table>

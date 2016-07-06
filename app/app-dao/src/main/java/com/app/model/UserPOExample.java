@@ -1,4 +1,4 @@
-package com.app.model.po;
+package com.app.model;
 
 import java.util.ArrayList;
 import java.util.List;

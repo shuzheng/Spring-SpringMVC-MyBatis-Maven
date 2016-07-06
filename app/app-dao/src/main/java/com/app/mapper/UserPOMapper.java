@@ -1,7 +1,7 @@
-package com.app.mapper.po;
+package com.app.mapper;
 
-import com.app.model.po.UserPO;
-import com.app.model.po.UserPOExample;
+import com.app.model.UserPO;
+import com.app.model.UserPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

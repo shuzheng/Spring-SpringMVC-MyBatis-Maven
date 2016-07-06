@@ -1,4 +1,4 @@
-package com.app.model.po;
+package com.app.model;
 
 public class UserPO {
     private Integer id;
