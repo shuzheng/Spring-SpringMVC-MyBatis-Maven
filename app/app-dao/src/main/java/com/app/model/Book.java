@@ -1,6 +1,6 @@
 package com.app.model;
 
-public class BookPO {
+public class Book {
     private Integer id;
 
     private Integer userid;

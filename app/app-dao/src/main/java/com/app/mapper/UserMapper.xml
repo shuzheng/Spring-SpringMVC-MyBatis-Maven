@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.app.mapper.UserPOMapper" >
-  <resultMap id="BaseResultMap" type="com.app.model.UserPO" >
+<mapper namespace="com.app.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.app.model.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -9,7 +9,7 @@
     <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="ctime" property="ctime" jdbcType="BIGINT" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.app.model.UserPO" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.app.model.User" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -76,7 +76,7 @@
   <sql id="Blob_Column_List" >
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.app.model.UserPOExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.app.model.UserExample" >
     select
     <if test="distinct" >
       distinct
@@ -92,7 +92,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.app.model.UserPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.app.model.UserExample" >
     select
     <if test="distinct" >
       distinct
@@ -118,13 +118,13 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.app.model.UserPOExample" >
+  <delete id="deleteByExample" parameterType="com.app.model.UserExample" >
     delete from user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.app.model.UserPO" >
+  <insert id="insert" parameterType="com.app.model.User" >
     insert into user (id, username, password, 
       nickname, sex, ctime, 
       content)
@@ -132,7 +132,7 @@
       #{nickname,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{ctime,jdbcType=BIGINT}, 
       #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.app.model.UserPO" >
+  <insert id="insertSelective" parameterType="com.app.model.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -181,7 +181,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.app.model.UserPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.app.model.UserExample" resultType="java.lang.Integer" >
     select count(*) from user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -241,7 +241,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.UserPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.User" >
     update user
     <set >
       <if test="username != null" >
@@ -265,7 +265,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.app.model.UserPO" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.app.model.User" >
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -275,7 +275,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.app.model.UserPO" >
+  <update id="updateByPrimaryKey" parameterType="com.app.model.User" >
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

@@ -1,6 +1,6 @@
 package com.app.model;
 
-public class UserPO {
+public class User {
     private Integer id;
 
     private String username;
