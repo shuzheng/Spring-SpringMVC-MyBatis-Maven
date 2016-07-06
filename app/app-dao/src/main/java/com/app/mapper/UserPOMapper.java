@@ -16,15 +16,21 @@ public interface UserPOMapper {
 
     int insertSelective(UserPO record);
 
+    List<UserPO> selectByExampleWithBLOBs(UserPOExample example);
+
     List<UserPO> selectByExample(UserPOExample example);
 
     UserPO selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") UserPO record, @Param("example") UserPOExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") UserPO record, @Param("example") UserPOExample example);
+
     int updateByExample(@Param("record") UserPO record, @Param("example") UserPOExample example);
 
     int updateByPrimaryKeySelective(UserPO record);
+
+    int updateByPrimaryKeyWithBLOBs(UserPO record);
 
     int updateByPrimaryKey(UserPO record);
 }

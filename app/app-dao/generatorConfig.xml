@@ -18,7 +18,6 @@
 
 		<javaModelGenerator targetPackage="com.app.model"
 			targetProject="app-dao">
-			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<sqlMapGenerator targetPackage="com.app.mapper"

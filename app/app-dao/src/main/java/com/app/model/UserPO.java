@@ -13,6 +13,8 @@ public class UserPO {
 
     private Long ctime;
 
+    private String content;
+
     public Integer getId() {
         return id;
     }
@@ -26,7 +28,7 @@ public class UserPO {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getPassword() {
@@ -34,7 +36,7 @@ public class UserPO {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public String getNickname() {
@@ -42,7 +44,7 @@ public class UserPO {
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
+        this.nickname = nickname;
     }
 
     public Integer getSex() {
@@ -59,5 +61,13 @@ public class UserPO {
 
     public void setCtime(Long ctime) {
         this.ctime = ctime;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }
