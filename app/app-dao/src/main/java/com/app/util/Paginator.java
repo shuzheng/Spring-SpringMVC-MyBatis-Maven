@@ -3,6 +3,7 @@ package com.app.util;
 
 /**
  * 分页实体类
+ * 
  * @author shuzheng
  * @date 2015-10-06
  */

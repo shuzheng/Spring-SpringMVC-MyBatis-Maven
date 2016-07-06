@@ -19,10 +19,10 @@ import com.app.util.Paginator;
 
 
 /**
- * 
  * 分页拦截器
+ * 
  * @author shuzheng
- * @version 2015/10/31
+ * @date 2015-10-31
  */
 @Intercepts({
 	@Signature(
