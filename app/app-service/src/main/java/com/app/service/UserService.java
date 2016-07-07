@@ -12,13 +12,7 @@ import com.app.model.UserVO;
  * @author shuzheng
  * @date 2016年7月6日 下午6:03:45
  */
-public interface UserService {
-
-	/**
-	 * 获取基本操作mapper
-	 * @return
-	 */
-	UserMapper getMapper();
+public interface UserService extends BaseService<UserMapper> {
 	
 	/**
 	 * 获取带book数据的用户

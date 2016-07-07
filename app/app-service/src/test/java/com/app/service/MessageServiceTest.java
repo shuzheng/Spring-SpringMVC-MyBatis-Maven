@@ -43,6 +43,9 @@ public class MessageServiceTest {
 		
 		UserVO userVO = userService.selectUserWithBook(1);
 		System.out.println(userVO.getBooks().size());
+		
+		User user2 = userService.getMapper().selectByPrimaryKey(1);
+		System.out.println(user2.getNickname());
 	}
 	
 }
