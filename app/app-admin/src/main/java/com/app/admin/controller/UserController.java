@@ -36,7 +36,7 @@ import com.app.util.Paginator;
  */
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController {
 	
 	private static Logger logger = LoggerFactory.getLogger(UserController.class);
 	
@@ -207,8 +207,8 @@ public class UserController {
 				(!contentType.equals("image/x-png")) && 
 				(!contentType.equals("image/bmp")) && 
 				(!contentType.equals("image/gif"))) {
-			map.put("result", "failed");
-			map.put("data", "不支持该类型的文件！");
+			map.put(RESULT, FAILED);
+			map.put(DATA, "不支持该类型的文件！");
 			return map;
 		}
 		// 创建图片目录
@@ -221,8 +221,8 @@ public class UserController {
 		}
 		// 保存图片
 		file.transferTo(targetFile);
-		map.put("result", "success");
-		map.put("data", targetFile.getAbsoluteFile());
+		map.put(RESULT, SUCCESS);
+		map.put(DATA, targetFile.getAbsoluteFile());
 		return map;
 	}
 	
