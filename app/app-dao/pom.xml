@@ -22,8 +22,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.app</groupId>
-			<artifactId>app-common</artifactId>
+			<groupId>com.shuzheng.ssm</groupId>
+			<artifactId>ssm-common</artifactId>
 			<version>1.0.0</version>
 			<type>jar</type>
 		</dependency>
