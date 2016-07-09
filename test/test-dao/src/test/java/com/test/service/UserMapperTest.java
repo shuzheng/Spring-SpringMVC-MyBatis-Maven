@@ -21,7 +21,7 @@ import com.test.model.User;
 	"classpath:applicationContext-jdbc.xml"
 })
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-public class MessageServiceTest {
+public class UserMapperTest {
 
 	@Autowired
 	private UserMapper userMapper;
@@ -30,6 +30,15 @@ public class MessageServiceTest {
 	public void index() {
 		User user = userMapper.selectByPrimaryKey(1);
 		System.out.println(user.getNickname());
+		
+		User tempUser = new User();
+		tempUser.setUsername("test");
+		tempUser.setNickname("测试");
+		tempUser.setPassword("123456");
+		tempUser.setSex(1);
+		tempUser.setCtime(System.currentTimeMillis());
+		int count = userMapper.insert(tempUser);
+		System.out.println("插入：" + count + "条数据，id为：" + tempUser.getId());
 	}
 	
 }
