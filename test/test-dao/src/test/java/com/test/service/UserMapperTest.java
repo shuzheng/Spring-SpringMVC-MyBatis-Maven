@@ -37,7 +37,7 @@ public class UserMapperTest {
 	@Test
 	public void index() {
 		User user = userMapper.selectByPrimaryKey(1);
-		System.out.println(user.getNickname());
+		System.out.println(user.getContent());
 		
 		User tempUser = new User();
 		tempUser.setUsername("test");

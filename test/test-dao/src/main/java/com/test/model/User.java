@@ -23,6 +23,8 @@ public class User {
 	private Integer sex;
 
 	private Long ctime;
+	
+	private String content;
 
 	public Integer getId() {
 		return id;
@@ -70,6 +72,14 @@ public class User {
 
 	public void setCtime(Long ctime) {
 		this.ctime = ctime;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 }
